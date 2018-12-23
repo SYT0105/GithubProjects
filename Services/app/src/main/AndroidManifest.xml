@@ -4,6 +4,12 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-feature android:name="android.hardware.location.network" />
+    <uses-feature android:name="android.hardware.location.gps" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- This includes both Network and GPS provider -->
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -11,16 +17,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.services.MainActivity">
+
+        <activity android:name="com.location.LocationActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.services.SecondActivity">
-
-        </activity>
+        <activity android:name="com.services.SecondActivity" />
 
         <provider
             android:name="com.providers.MyContentProvider"
@@ -29,6 +34,8 @@
 
         <service android:name="com.services.MyService" />
         <service android:name="com.services.MyIntentService" />
+        <service android:name="com.location.FetchAddressIntentService" />
+
     </application>
 
 </manifest>
